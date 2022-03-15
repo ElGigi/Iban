@@ -1,0 +1,23 @@
+{
+  "name": "elgigi/iban",
+  "description": "Library to manipulate IBAN and BBAN of countries",
+  "type": "library",
+  "license": "MIT",
+  "minimum-stability": "stable",
+  "autoload": {
+    "psr-4": {
+      "ElGigi\\Iban\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "ElGigi\\Iban\\Tests\\": "tests/"
+    }
+  },
+  "require": {
+    "php": "^8.1"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^9.5"
+  }
+}
