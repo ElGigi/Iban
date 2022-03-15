@@ -1,5 +1,11 @@
 # Iban
 
+[![Latest Version](http://img.shields.io/packagist/v/elgigi/iban.svg?style=flat-square)](https://github.com/ElGigi/Iban/releases)
+[![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE)
+[![Build Status](https://img.shields.io/github/workflow/status/ElGigi/Iban/Tests/main.svg?style=flat-square)](https://github.com/ElGigi/Iban/actions/workflows/tests.yml?query=branch%3Amain)
+[![Codacy Grade](https://img.shields.io/codacy/grade/0390c2a60e42473098e6e738b8fda911/main.svg?style=flat-square)](https://www.codacy.com/app/ElGigi/Iban)
+[![Total Downloads](https://img.shields.io/packagist/dt/elgigi/iban.svg?style=flat-square)](https://packagist.org/packages/elgigi/iban)
+
 PHP Library to manipulate IBAN and BBAN of countries, with validation, parsing, JSON representation...
 
 ## Installation
