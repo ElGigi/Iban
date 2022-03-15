@@ -17,6 +17,7 @@ use ElGigi\Iban\Validation\IbanValidation;
 use InvalidArgumentException;
 use JsonSerializable;
 use Stringable;
+use Throwable;
 
 class Iban implements Stringable, JsonSerializable
 {
@@ -53,6 +54,26 @@ class Iban implements Stringable, JsonSerializable
             bban: Bban::parse($matches[3], $country),
             checkDigits: (int)$matches[2],
         );
+    }
+
+    /**
+     * Try to parse IBAN.
+     *
+     * @param string|null $iban
+     *
+     * @return static|null
+     */
+    public static function tryParse(string|null $iban): ?static
+    {
+        if (null === $iban) {
+            return null;
+        }
+
+        try {
+            return static::parse($iban);
+        } catch (Throwable) {
+            return null;
+        }
     }
 
     /**

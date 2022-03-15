@@ -16,6 +16,7 @@ use ElGigi\Iban\Validation\BbanValidation;
 use JsonSerializable;
 use RuntimeException;
 use Stringable;
+use Throwable;
 
 class Bban implements Stringable, JsonSerializable
 {
@@ -65,6 +66,27 @@ class Bban implements Stringable, JsonSerializable
         }
 
         return new static(...$arguments);
+    }
+
+    /**
+     * Try to parse BBAN.
+     *
+     * @param string|null $bban
+     * @param Country|null $country
+     *
+     * @return static|null
+     */
+    public static function tryParse(string|null $bban, Country|null $country = null): ?static
+    {
+        if (null === $bban || null === $country) {
+            return null;
+        }
+
+        try {
+            return static::parse($bban, $country);
+        } catch (Throwable) {
+            return null;
+        }
     }
 
     /**
