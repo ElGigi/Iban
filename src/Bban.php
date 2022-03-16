@@ -72,11 +72,11 @@ class Bban implements Stringable, JsonSerializable
      * Try to parse BBAN.
      *
      * @param string|null $bban
-     * @param Country|null $country
+     * @param Country|string|null $country
      *
      * @return static|null
      */
-    public static function tryParse(string|null $bban, Country|null $country = null): ?static
+    public static function tryParse(string|null $bban, Country|string|null $country = null): ?static
     {
         if (null === $bban || null === $country) {
             return null;
@@ -172,6 +172,16 @@ class Bban implements Stringable, JsonSerializable
                 $condensed ? '' : ' ',
                 str_split(implode($str), 4)
             );
+    }
+
+    /**
+     * Generate IBAN from BBAN.
+     *
+     * @return Iban
+     */
+    public function generateIban(): Iban
+    {
+        return new Iban(bban: $this);
     }
 
     /**

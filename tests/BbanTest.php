@@ -12,6 +12,7 @@ namespace ElGigi\Iban\Tests;
 
 use ElGigi\Iban\Bban;
 use ElGigi\Iban\Country;
+use ElGigi\Iban\Iban;
 
 class BbanTest extends AbstractTest
 {
@@ -23,7 +24,9 @@ class BbanTest extends AbstractTest
         foreach ($data as $testData) {
             $country = Country::from($testData['iso_country_code']);
             $bban = Bban::parse($testData['bban'], $country);
+            $bban2 = Bban::tryParse($testData['bban'], $country);
 
+            $this->assertEquals($bban, $bban2);
             $this->assertSame(
                 $testData['bban'],
                 (string)$bban,
@@ -63,7 +66,21 @@ class BbanTest extends AbstractTest
                 $bban->isValid(),
                 $bban->country->name . ' BBAN validation'
             );
+
+            // Generate IBAN
+            $this->assertEquals(
+                Iban::parse($testData['iban']),
+                $bban->generateIban(),
+                $bban->country->name . ' BBAN generate new IBAN'
+            );
         }
+    }
+
+    public function testTryParse()
+    {
+        $this->assertNull(Bban::tryParse('FAKE'));
+        $this->assertNull(Bban::tryParse('FAKE', 'FAKE'));
+        $this->assertNull(Bban::tryParse(null));
     }
 
     /**

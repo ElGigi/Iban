@@ -23,7 +23,9 @@ class IbanTest extends AbstractTest
         foreach ($data as $testData) {
             $country = Country::from($testData['iso_country_code']);
             $iban = Iban::parse($testData['iban']);
+            $iban2 = Iban::tryParse($testData['iban']);
 
+            $this->assertEquals($iban, $iban2);
             $this->assertSame(
                 $country,
                 $iban->getCountry(),
@@ -72,6 +74,12 @@ class IbanTest extends AbstractTest
 
             );
         }
+    }
+
+    public function testTryParse()
+    {
+        $this->assertNull(Iban::tryParse('FAKE'));
+        $this->assertNull(Iban::tryParse(null));
     }
 
     /**
