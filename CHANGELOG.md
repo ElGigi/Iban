@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file. This projec
 to [Semantic Versioning] (http://semver.org/). For change log format,
 use [Keep a Changelog] (http://keepachangelog.com/).
 
+## [1.0.0-beta2] - In progress
+
+### Added
+
+- New methods `Iban::tryParse()` and `Bban::tryParse()`
+- New method `Bban::generateIban()`
+
 ## [1.0.0-beta1] - 2022-03-15
 
 Initial development
