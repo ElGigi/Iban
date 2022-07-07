@@ -14,87 +14,87 @@ namespace ElGigi\Iban;
 
 use RuntimeException;
 
-enum Country
+enum Country: string
 {
-    case AD;
-    case AE;
-    case AL;
-    case AT;
-    case AZ;
-    case BA;
-    case BE;
-    case BG;
-    case BH;
-    case BR;
-    case BY;
-    case CH;
-    case CR;
-    case CY;
-    case CZ;
-    case DE;
-    case DK;
-    case DO;
-    case EE;
-    case EG;
-    case ES;
-    case FI;
-    case FO;
-    case FR;
-    case GB;
-    case GE;
-    case GI;
-    case GL;
-    case GR;
-    case GT;
-    case HR;
-    case HU;
-    case IE;
-    case IL;
-    case IQ;
-    case IS;
-    case IT;
-    case JO;
-    case KW;
-    case KZ;
-    case LB;
-    case LC;
-    case LI;
-    case LT;
-    case LU;
-    case LV;
-    case LY;
-    case MC;
-    case MD;
-    case ME;
-    case MK;
-    case MR;
-    case MT;
-    case MU;
-    case NL;
-    case NO;
-    case PK;
-    case PL;
-    case PS;
-    case PT;
-    case QA;
-    case RO;
-    case RS;
-    case SA;
-    case SC;
-    case SD;
-    case SE;
-    case SI;
-    case SK;
-    case SM;
-    case ST;
-    case SV;
-    case TL;
-    case TN;
-    case TR;
-    case UA;
-    case VA;
-    case VG;
-    case XK;
+    case AD = 'AD';
+    case AE = 'AE';
+    case AL = 'AL';
+    case AT = 'AT';
+    case AZ = 'AZ';
+    case BA = 'BA';
+    case BE = 'BE';
+    case BG = 'BG';
+    case BH = 'BH';
+    case BR = 'BR';
+    case BY = 'BY';
+    case CH = 'CH';
+    case CR = 'CR';
+    case CY = 'CY';
+    case CZ = 'CZ';
+    case DE = 'DE';
+    case DK = 'DK';
+    case DO = 'DO';
+    case EE = 'EE';
+    case EG = 'EG';
+    case ES = 'ES';
+    case FI = 'FI';
+    case FO = 'FO';
+    case FR = 'FR';
+    case GB = 'GB';
+    case GE = 'GE';
+    case GI = 'GI';
+    case GL = 'GL';
+    case GR = 'GR';
+    case GT = 'GT';
+    case HR = 'HR';
+    case HU = 'HU';
+    case IE = 'IE';
+    case IL = 'IL';
+    case IQ = 'IQ';
+    case IS = 'IS';
+    case IT = 'IT';
+    case JO = 'JO';
+    case KW = 'KW';
+    case KZ = 'KZ';
+    case LB = 'LB';
+    case LC = 'LC';
+    case LI = 'LI';
+    case LT = 'LT';
+    case LU = 'LU';
+    case LV = 'LV';
+    case LY = 'LY';
+    case MC = 'MC';
+    case MD = 'MD';
+    case ME = 'ME';
+    case MK = 'MK';
+    case MR = 'MR';
+    case MT = 'MT';
+    case MU = 'MU';
+    case NL = 'NL';
+    case NO = 'NO';
+    case PK = 'PK';
+    case PL = 'PL';
+    case PS = 'PS';
+    case PT = 'PT';
+    case QA = 'QA';
+    case RO = 'RO';
+    case RS = 'RS';
+    case SA = 'SA';
+    case SC = 'SC';
+    case SD = 'SD';
+    case SE = 'SE';
+    case SI = 'SI';
+    case SK = 'SK';
+    case SM = 'SM';
+    case ST = 'ST';
+    case SV = 'SV';
+    case TL = 'TL';
+    case TN = 'TN';
+    case TR = 'TR';
+    case UA = 'UA';
+    case VA = 'VA';
+    case VG = 'VG';
+    case XK = 'XK';
 
     private const SEPA_MEMBERS = [
         self::AD,
@@ -144,18 +144,6 @@ enum Country
     public static function sepaMembers(): array
     {
         return self::SEPA_MEMBERS;
-    }
-
-    /**
-     * From ISO code.
-     *
-     * @param string $iso
-     *
-     * @return Country
-     */
-    public static function from(string $iso): Country
-    {
-        return constant(self::class . '::' . $iso);
     }
 
     /**
