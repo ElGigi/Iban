@@ -11,6 +11,10 @@ use [Keep a Changelog] (http://keepachangelog.com/).
 - New methods `Iban::tryParse()` and `Bban::tryParse()`
 - New method `Bban::generateIban()`
 
+## Changed
+
+- Change enum to backed string enum
+
 ## [1.0.0-beta1] - 2022-03-15
 
 Initial development
