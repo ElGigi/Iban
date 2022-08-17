@@ -23,15 +23,25 @@ class Bban implements Stringable, JsonSerializable
     use CloneableTrait;
 
     protected readonly array $additional;
+    public readonly ?string $checkDigits;
 
     public function __construct(
         public readonly ?Country $country,
         public readonly string $accountNumber,
         public readonly ?string $bankIdentifier = null,
         public readonly ?string $branchIdentifier = null,
-        public readonly ?string $checkDigits = null,
+        ?string $checkDigits = null,
         string ...$additional,
     ) {
+        if (null === $checkDigits) {
+            $guessedCheckDigits = BbanValidation::checkDigits($this);
+            $checkDigits = $guessedCheckDigits['checkDigits'] ?? null;
+
+            unset($guessedCheckDigits['checkDigits']);
+            $additional = array_replace($additional, $guessedCheckDigits);
+        }
+
+        $this->checkDigits = $checkDigits;
         $this->additional = $additional;
     }
 

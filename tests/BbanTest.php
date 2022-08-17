@@ -13,6 +13,7 @@ namespace ElGigi\Iban\Tests;
 use ElGigi\Iban\Bban;
 use ElGigi\Iban\Country;
 use ElGigi\Iban\Iban;
+use ElGigi\Iban\Validation\BbanValidation;
 
 class BbanTest extends AbstractTest
 {
@@ -30,49 +31,63 @@ class BbanTest extends AbstractTest
             $this->assertSame(
                 $testData['bban'],
                 (string)$bban,
-                $bban->country->name . ' BBAN'
+                sprintf('%s BBAN (%s)', $bban->country->name, $bban)
             );
             $this->assertSame(
                 $testData['bban'],
                 $bban->format(),
-                $bban->country->name . ' BBAN'
+                sprintf('%s BBAN (%s)', $bban->country->name, $bban)
             );
             $this->assertSame(
                 preg_replace('/\s/', '', $testData['bban']),
                 $bban->format(true),
-                $bban->country->name . ' condensed BBAN'
+                sprintf('%s condensed BBAN (%s)', $bban->country->name, $bban)
             );
             $this->assertSame(
                 $testData['bank_identifier'],
                 $bban->bankIdentifier,
-                $bban->country->name . ' BBAN bank identifier'
+                sprintf('%s BBAN bank identifier (%s)', $bban->country->name, $bban)
             );
             $this->assertSame(
                 $testData['branch_identifier'],
                 $bban->branchIdentifier,
-                $bban->country->name . ' BBAN branch identifier'
+                sprintf('%s BBAN branch identifier (%s)', $bban->country->name, $bban)
             );
             $this->assertSame(
                 $testData['account_number'],
                 $bban->accountNumber,
-                $bban->country->name . ' BBAN account number'
+                sprintf('%s BBAN account number (%s)', $bban->country->name, $bban)
             );
             $this->assertSame(
                 $testData['bban_check_digits'],
                 $bban->checkDigits,
-                $bban->country->name . ' BBAN check digits'
+                sprintf('%s BBAN check digits (%s)', $bban->country->name, $bban)
             );
             $this->assertTrue(
                 $bban->isValid(),
-                $bban->country->name . ' BBAN validation'
+                sprintf('%s BBAN validation (%s)', $bban->country->name, $bban)
             );
 
             // Generate IBAN
             $this->assertEquals(
                 Iban::parse($testData['iban']),
                 $bban->generateIban(),
-                $bban->country->name . ' BBAN generate new IBAN'
+                sprintf('%s BBAN generate new IBAN (%s)', $bban->country->name, $bban)
             );
+
+            // Guess check digits
+            if ($bban->country->getBbanFormat()['checkDigits']) {
+                $checkDigits = BbanValidation::checkDigits($bban);
+
+                foreach ($checkDigits as $key => $value) {
+                    $this->assertSame(
+                        $bban->{$key},
+                        $value,
+                        $bban->country->name . ' BBAN guess check digits'
+
+                    );
+                }
+            }
         }
     }
 

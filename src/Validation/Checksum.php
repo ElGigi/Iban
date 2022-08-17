@@ -119,6 +119,13 @@ final class Checksum
 
     public static function luhn(string $str, bool $even = true): bool
     {
+        $sum = Checksum::luhnSum($str, $even);
+
+        return 0 == ($sum % 10);
+    }
+
+    public static function luhnSum(string $str, bool $even = true): int
+    {
         $sum = [];
         $strLength = strlen($str);
         $step = 0;
@@ -140,6 +147,6 @@ final class Checksum
             $sum[] = $tmp;
         }
 
-        return 0 == (array_sum($sum) % 10);
+        return array_sum($sum);
     }
 }
