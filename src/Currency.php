@@ -176,7 +176,7 @@ enum Currency: string
     {
         $countries = [];
 
-        foreach (Country::cases() as $country) {
+        foreach (Country::implementedCases() as $country) {
             $currency = self::country($country);
 
             if ($this !== $currency) {

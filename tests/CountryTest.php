@@ -19,7 +19,7 @@ class CountryTest extends TestCase
     {
         $sepaMembers = Country::sepaMembers();
 
-        foreach (Country::cases() as $country) {
+        foreach (Country::implementedCases() as $country) {
             $this->assertEquals(
                 in_array($country, $sepaMembers),
                 $country->isSepaMember(),
@@ -31,7 +31,7 @@ class CountryTest extends TestCase
     {
         $this->expectNotToPerformAssertions();
 
-        foreach (Country::cases() as $country) {
+        foreach (Country::implementedCases() as $country) {
             $country->getCurrency();
         }
     }
@@ -40,7 +40,7 @@ class CountryTest extends TestCase
     {
         $this->expectNotToPerformAssertions();
 
-        foreach (Country::cases() as $country) {
+        foreach (Country::implementedCases() as $country) {
             $country->getIbanRegex();
         }
     }
@@ -49,7 +49,7 @@ class CountryTest extends TestCase
     {
         $this->expectNotToPerformAssertions();
 
-        foreach (Country::cases() as $country) {
+        foreach (Country::implementedCases() as $country) {
             $country->getLocale();
         }
     }

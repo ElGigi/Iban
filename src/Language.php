@@ -165,7 +165,7 @@ enum Language: string
     {
         $countries = [];
 
-        foreach (Country::cases() as $country) {
+        foreach (Country::implementedCases() as $country) {
             $languages = self::country($country);
             if (!is_array($languages)) {
                 $languages = [$languages];
