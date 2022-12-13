@@ -13,6 +13,7 @@ declare(strict_types=1);
 namespace ElGigi\Iban\Validation;
 
 use ElGigi\Iban\Iban;
+use Throwable;
 
 class IbanValidation
 {
@@ -25,18 +26,22 @@ class IbanValidation
      */
     public static function validate(Iban|string $iban): bool
     {
-        is_string($iban) && $iban = Iban::parse($iban);
+        try {
+            is_string($iban) && $iban = Iban::parse($iban);
 
-        if (0 === preg_match(sprintf('/^%s$/i', $iban->getCountry()->getIbanRegex()), $iban->format(true))) {
+            if (0 === preg_match(sprintf('/^%s$/i', $iban->getCountry()->getIbanRegex()), $iban->format(true))) {
+                return false;
+            }
+
+            $ibanStr = strtoupper(
+                $iban->bban->format(true) .
+                $iban->bban->country->name .
+                sprintf('%02d', $iban->checkDigits)
+            );
+
+            return 1 === Checksum::modulo(Checksum::numericConversion($ibanStr), 97);
+        } catch (Throwable) {
             return false;
         }
-
-        $ibanStr = strtoupper(
-            $iban->bban->format(true) .
-            $iban->bban->country->name .
-            sprintf('%02d', $iban->checkDigits)
-        );
-
-        return 1 === Checksum::modulo(Checksum::numericConversion($ibanStr), 97);
     }
 }

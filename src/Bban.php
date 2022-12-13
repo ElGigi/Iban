@@ -13,6 +13,7 @@ declare(strict_types=1);
 namespace ElGigi\Iban;
 
 use ElGigi\Iban\Validation\BbanValidation;
+use InvalidArgumentException;
 use JsonSerializable;
 use RuntimeException;
 use Stringable;
@@ -75,7 +76,13 @@ class Bban implements Stringable, JsonSerializable
             $arguments[$key] = substr($bban, ...$value);
         }
 
-        return new static(...$arguments);
+        $bban = new static(...$arguments);
+
+        if (false === $bban->isValid()) {
+            throw new InvalidArgumentException(sprintf('"%s" is not a valid BBAN', $bban));
+        }
+
+        return $bban;
     }
 
     /**
