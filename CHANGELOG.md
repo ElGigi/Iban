@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file. This projec
 to [Semantic Versioning] (http://semver.org/). For change log format,
 use [Keep a Changelog] (http://keepachangelog.com/).
 
+## [1.0.0-beta5] - 2022-12-15
+
+### Added
+
+- All missing IBAN formats
+
 ## [1.0.0-beta4] - 2022-12-13
 
 ### Added
