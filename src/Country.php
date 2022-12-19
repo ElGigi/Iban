@@ -512,7 +512,7 @@ enum Country: string
                 self::FO => "[0-9]{14}",                     // Faroe Islands
                 self::FR => "[0-9]{10}[0-9A-Z]{11}[0-9]{2}", // France
                 self::GB => "[A-Z]{4}[0-9]{14}",             // United Kingdom
-                self::GE => "[0-9A-Z]{18}",                  // Georgia
+                self::GE => "[0-9A-Z]{2}[0-9]{16}",          // Georgia
                 self::GI => "[A-Z]{4}[0-9A-Z]{15}",          // Gibraltar
                 self::GL => "[0-9]{14}",                     // Greenland
                 self::GR => "[0-9]{7}[0-9A-Z]{16}",          // Greece

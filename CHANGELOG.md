@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file. This projec
 to [Semantic Versioning] (http://semver.org/). For change log format,
 use [Keep a Changelog] (http://keepachangelog.com/).
 
+## [1.0.1] - 2022-12-19
+
+### Fixed
+
+- GE iban regex
+
 ## [1.0.0] - 2022-12-19
 
 No change since the last release
