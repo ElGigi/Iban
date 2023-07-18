@@ -73,6 +73,7 @@ enum Currency: string
     case UAH = 'UAH';
     case USD = 'USD';
     case XCD = 'XCD';
+    case XPF = 'XPF';
 
     /**
      * Get currency for country.
@@ -144,6 +145,7 @@ enum Currency: string
             Country::MR => self::MRO,
             Country::MT => self::MTL,
             Country::MU => self::MUR,
+            Country::NC => self::XPF,
             Country::NO => self::NOK,
             Country::PK => self::PKR,
             Country::PL => self::PLN,

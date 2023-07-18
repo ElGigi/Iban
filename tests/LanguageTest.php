@@ -27,6 +27,7 @@ class LanguageTest extends TestCase
                 Country::MC,
                 Country::MR,
                 Country::MU,
+                Country::NC
             ],
             Language::fr->getCountries()
         );
