@@ -295,6 +295,7 @@ enum Country: string
         self::LV,
         self::MC,
         self::MT,
+        self::NC,
         self::NL,
         self::NO,
         self::PL,
@@ -369,6 +370,7 @@ enum Country: string
             self::MR,
             self::MT,
             self::MU,
+            self::NC,
             self::NL,
             self::NO,
             self::PK,
@@ -510,7 +512,8 @@ enum Country: string
                 self::ES => "[0-9]{20}",                     // Spain
                 self::FI => "[0-9]{14}",                     // Finland
                 self::FO => "[0-9]{14}",                     // Faroe Islands
-                self::FR => "[0-9]{10}[0-9A-Z]{11}[0-9]{2}", // France
+                self::FR,
+                self::NC => "[0-9]{10}[0-9A-Z]{11}[0-9]{2}", // France, New Caledonia
                 self::GB => "[A-Z]{4}[0-9]{14}",             // United Kingdom
                 self::GE => "[0-9A-Z]{2}[0-9]{16}",          // Georgia
                 self::GI => "[A-Z]{4}[0-9A-Z]{15}",          // Gibraltar
@@ -706,7 +709,8 @@ enum Country: string
             ],
             self::FR,
             self::MC,
-            self::MR => [
+            self::MR,
+            self::NC => [
                 'bankIdentifier' => [0, 5],
                 'branchIdentifier' => [5, 5],
                 'accountNumber' => [10, -2],
