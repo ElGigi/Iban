@@ -73,6 +73,7 @@ enum Currency: string
     case UAH = 'UAH';
     case USD = 'USD';
     case XCD = 'XCD';
+    case XPF = 'XPF';
 
     /**
      * Get currency for country.
