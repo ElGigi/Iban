@@ -29,28 +29,29 @@ class CountryTest extends TestCase
 
     public function testGetCurrency()
     {
-        $this->expectNotToPerformAssertions();
-
         foreach (Country::implementedCases() as $country) {
-            $country->getCurrency();
+            $this->assertNotEmpty($country->getCurrency());
         }
     }
 
     public function testGetBbanRegex()
     {
-        $this->expectNotToPerformAssertions();
-
         foreach (Country::implementedCases() as $country) {
-            $country->getIbanRegex();
+            $this->assertNotEmpty($country->getIbanRegex());
+        }
+    }
+
+    public function testGetLanguage()
+    {
+        foreach (Country::implementedCases() as $country) {
+            $this->assertNotEmpty($country->getLanguage());
         }
     }
 
     public function testGetLocale()
     {
-        $this->expectNotToPerformAssertions();
-
         foreach (Country::implementedCases() as $country) {
-            $country->getLocale();
+            $this->assertNotEmpty($country->getLocale());
         }
     }
 }

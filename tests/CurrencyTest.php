@@ -18,6 +18,13 @@ class CurrencyTest extends TestCase
 {
     public function testGetCountries()
     {
+        foreach (Currency::cases() as $currency) {
+            $this->assertNotEmpty($currency->getCountries());
+        }
+    }
+
+    public function testGetCountries_multiple()
+    {
         $this->assertEquals(
             [
                 Country::AD,
