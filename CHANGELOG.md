@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file. This projec
 to [Semantic Versioning] (http://semver.org/). For change log format,
 use [Keep a Changelog] (http://keepachangelog.com/).
 
+## [1.1.0] - 2023-07-18
+
+### Added
+
+- New country NC (thanks @JDakkers)
+
 ## [1.0.1] - 2022-12-19
 
 ### Fixed
