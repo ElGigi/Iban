@@ -19,7 +19,10 @@ class CurrencyTest extends TestCase
     public function testGetCountries()
     {
         foreach (Currency::cases() as $currency) {
-            $this->assertNotEmpty($currency->getCountries());
+            $this->assertNotEmpty(
+                $currency->getCountries(),
+                'Currency without country: ' . $currency->value,
+            );
         }
     }
 
@@ -30,18 +33,26 @@ class CurrencyTest extends TestCase
                 Country::AD,
                 Country::AT,
                 Country::BE,
+                Country::CY,
                 Country::DE,
+                Country::EE,
                 Country::ES,
                 Country::FI,
                 Country::FR,
                 Country::GR,
+                Country::HR,
                 Country::IE,
                 Country::IT,
+                Country::LT,
                 Country::LU,
+                Country::LV,
                 Country::MC,
                 Country::ME,
+                Country::MT,
                 Country::NL,
                 Country::PT,
+                Country::SI,
+                Country::SK,
                 Country::SM,
                 Country::VA,
                 Country::XK,
@@ -50,7 +61,9 @@ class CurrencyTest extends TestCase
         );
         $this->assertEquals(
             [
+                Country::EC,
                 Country::TL,
+                Country::US,
                 Country::VG,
             ],
             Currency::USD->getCountries()

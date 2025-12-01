@@ -53,7 +53,7 @@ abstract class AbstractTest extends TestCase
                     'branch_identifier' => '1100',
                     'account_number' => '0000000235698741',
                     'bban_check_digits' => '9',
-                    'sepa_member' => false,
+                    'sepa_member' => true,
                 ]
             ],
             [
@@ -670,7 +670,7 @@ abstract class AbstractTest extends TestCase
                     'branch_identifier' => null,
                     'account_number' => '000225100013104168',
                     'bban_check_digits' => null,
-                    'sepa_member' => false,
+                    'sepa_member' => true,
                 ]
             ],
             [
@@ -683,7 +683,7 @@ abstract class AbstractTest extends TestCase
                     'branch_identifier' => null,
                     'account_number' => '0000123456789',
                     'bban_check_digits' => '51',
-                    'sepa_member' => false,
+                    'sepa_member' => true,
                 ]
             ],
             [
@@ -696,7 +696,7 @@ abstract class AbstractTest extends TestCase
                     'branch_identifier' => null,
                     'account_number' => '1200000589',
                     'bban_check_digits' => '84',
-                    'sepa_member' => false,
+                    'sepa_member' => true,
                 ]
             ],
             [
@@ -865,7 +865,7 @@ abstract class AbstractTest extends TestCase
                     'branch_identifier' => null,
                     'account_number' => '0056010016113',
                     'bban_check_digits' => '79',
-                    'sepa_member' => false,
+                    'sepa_member' => true,
                 ]
             ],
             [
